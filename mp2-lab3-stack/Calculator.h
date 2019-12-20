@@ -3,26 +3,32 @@
 #include <string>
 using namespace std;
 class TCalculator {
-	std::string expr;
-	std::string postfix;
+	string expr;
+	string postfix;
 	Tstack<char> st_c;
 	Tstack<double> st_d;
 public:
-	TCalculator() :st_c(100) {}
+	TCalculator() :st_c(100), st_d(100){}
+	TCalculator(const TCalculator& a) {
+		st_c = a.st_c;
+		st_d = a.st_d;
+		expr = a.expr;
+		postfix = a.postfix;
+	}
 	void SetExpr(string S) { expr = S; }
 	string GetExpr() {
 		return expr;
 	}
-	std::string GetPostfix() {
+	string GetPostfix() {
 		return postfix;
 	}
 	bool check() {
 		st_c.clear();
 		for (int i = 0; i < expr.size(); i++) {
-			if (expr[i] = '(') st_c.push(expr[i]);
+			if (expr[i] == '(') st_c.push(expr[i]);
 			if (expr[i] == ')') {
 				if (st_c.IsEmpty())return 0;
-				else st_c.pop();
+				st_c.pop();
 			}
 		}
 		return st_c.IsEmpty();
@@ -33,13 +39,12 @@ public:
 		if ((c == '*') || (c == '/'))return 2;
 	}
 	void ToPostfix() {
-		int i = 0;
 		string str = "(";
 		str += expr;
 		str += ")";
 		st_c.clear(); postfix = "";
-		for (i; i < (str.size()); i++) {
-			if (str[i] == '(')st_c.push(str[i]);
+		for (int i = 0; i < (str.size()); i++) {
+			if (str[i] == '(') { st_c.push(str[i]); }
 			if (((str[i] >= '0') && (str[i] <= '9')) || (str[i] == '.'))postfix += str[i];
 			if (str[i] == ')') {
 				char tmp = st_c.pop();
@@ -48,7 +53,8 @@ public:
 					tmp = st_c.pop();
 				}
 			}
-			if ((str[i] == '+') || (str[i] == '-') || (str[i] == '*') || (str[i] == '/')) postfix += " "; {
+			if ((str[i] == '+') || (str[i] == '-') || (str[i] == '*') || (str[i] == '/')) {
+				postfix += " ";
 				char tmp = st_c.pop();
 				while (prior(str[i]) <= prior(tmp)) {
 					postfix += tmp;

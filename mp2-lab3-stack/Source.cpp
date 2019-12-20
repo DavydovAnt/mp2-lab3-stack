@@ -1,8 +1,7 @@
-#include <iostream> 
 #include "Tstack.h"
 #include "Calculator.h"
 using namespace std;
-int main()
+void main()
 {
 	TCalculator c;
 	string expr;
