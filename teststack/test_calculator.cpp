@@ -39,9 +39,9 @@ TEST(TCalculator, can_convert_into_postfix)
 TEST(TCalculator, can_count_the_expression)
 {
 	TCalculator c;
-	c.SetExpr("1+2-3");
+	c.SetExpr("2-1/(8+3*4)+3*5+1/(8+3*4)");
 	c.ToPostfix();
-	EXPECT_EQ(c.Calc(), 0);
+	EXPECT_EQ(c.Calc(), 17);
 }
 
 TEST(TCalculator, throws_when_try_to_count_an_incorrect_expression)
