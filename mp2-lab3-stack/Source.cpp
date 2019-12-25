@@ -1,5 +1,6 @@
 #include "Tstack.h"
 #include "Calculator.h"
+#include <string>
 using namespace std;
 void main()
 {

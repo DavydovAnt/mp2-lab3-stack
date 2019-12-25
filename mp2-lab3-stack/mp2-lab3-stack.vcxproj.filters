@@ -26,5 +26,8 @@
     <ClInclude Include="Tstack.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="TstackList.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

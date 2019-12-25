@@ -3,6 +3,7 @@
 #include <msclr/marshal_cppstd.h>
 #include "../mp2-lab3-stack/Calculator.h"
 
+
 namespace CppWinForm1 {
 
 	using namespace System;
@@ -62,17 +63,17 @@ namespace CppWinForm1 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(12, 135);
+			this->button1->Location = System::Drawing::Point(107, 28);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"calculate";
+			this->button1->Text = L"Calculate";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(12, 196);
+			this->textBox1->Location = System::Drawing::Point(94, 81);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 20);
 			this->textBox1->TabIndex = 1;
@@ -81,7 +82,7 @@ namespace CppWinForm1 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(167, 196);
+			this->label1->Location = System::Drawing::Point(200, 85);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(0, 13);
 			this->label1->TabIndex = 2;
@@ -112,7 +113,6 @@ namespace CppWinForm1 {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		std::string Infix;
 		
-		//конвертация строки String^ в std::string
 		Infix = msclr::interop::marshal_as<std::string>(textBox1->Text);
 		
 		TCalculator c;
