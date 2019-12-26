@@ -2,8 +2,8 @@
 #include <iostream> 
 template <class T>
 struct TNode {
-	T val;				
-	TNode<T> *pNext;	
+	T val;
+	TNode<T> *pNext;
 };
 template <class T>
 class Tstack {
@@ -22,10 +22,10 @@ public:
 	}
 
 	Tstack(const Tstack<T>& a) {
-		if (p.pFirst == NULL)
+		if (a.pFirst == NULL)
 			pFirst = NULL;
 		else {
-			TNode<T> *a = p.pFirst;
+			TNode<T> *a = a.pFirst;
 			TNode<T> *t = new TNode<T>;
 			t->val = a->val;
 			pFirst = t;
@@ -46,7 +46,7 @@ public:
 	}
 
 	void push(const T& a) {
-		if (isfull()) throw 1;
+		if (IsFull()) throw 1;
 		TNode<T> *tmp = new TNode<T>;
 		tmp->pNext = pFirst;
 		tmp->val = a;
@@ -54,7 +54,7 @@ public:
 	}
 
 	T pop() {
-		if (isempty()) throw 1;
+		if (IsEmpty()) throw 1;
 		T res = pFirst->val;
 		TNode<T> *tmp = pFirst;
 		pFirst = pFirst->pNext;
@@ -62,7 +62,7 @@ public:
 		return res;
 	}
 	T top() {
-		if (isempty()) throw 1;
+		if (IsEmpty()) throw 1;
 		return pFirst->val;
 	}
 	void clear() {
@@ -82,4 +82,3 @@ public:
 		return true;
 	}
 };
-
